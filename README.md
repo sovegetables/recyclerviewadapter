@@ -27,7 +27,7 @@ mRv.setAdapter(mAdapter);
 mAdapter.setData(data)
 
 mAdapter.addHeader(layoutId, onBindHeaderViewListener)
-mAdapter.addFooter(layoutId, onBindHeaderViewListener)
+mAdapter.addFooter(layoutId, onBindFooterViewListener)
 ```
 2. MultiChoiceListRecyclerAdapter
 ```sh
@@ -108,19 +108,19 @@ private class Adapter extends LoadMoreListRecyclerAdapter<String> {
 
 mAdapter = new Adapter(this);
 mAdapter.setLoadMoreLayout(R.layout.spinner);
-mAdapter.setOnLoadMoreListener(new LoadMoreListRecyclerAdapter.OnLoadMoreListener() {
-    @Override
-    public void onLoadMore(LoadMoreListRecyclerAdapter adapter) {
-
+mAdapter.setOnLoadMoreListener(new OnLoadMoreListener(){
+    public void onLoadMore(LoadMoreListRecyclerAdapter adapter){
+        //load more
     }
 });
 mRv.setAdapter(mAdapter);
 mAdapter.setData(new ArrayList<>(Arrays.asList(Data.ITEMS)));
 ```
 4.OnItemClickListener
-mAdapter.setOnItemClickListener(new OnItemClickListener<Item>() {
-    @Override
-    public void onItemClick(View view, Item item, int position) {
+
+mAdapter.setOnItemClickListener(new OnItemClickListener<Item>(){
+
+    public void onItemClick(View view, Item item, int position){
 
     }
 });
