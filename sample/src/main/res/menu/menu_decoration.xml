@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_horizontal"
+        android:title="Horizontal decoration"
+        >
+    </item>
+
+    <item
+        android:id="@+id/menu_grid"
+        android:title="Grid decoration"
+        android:visible="false"
+        >
+    </item>
+
+</menu>
