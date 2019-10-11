@@ -1,7 +1,7 @@
 package com.albert.recyclerview.adapter;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
+import androidx.annotation.LayoutRes;
 
 import java.util.List;
 

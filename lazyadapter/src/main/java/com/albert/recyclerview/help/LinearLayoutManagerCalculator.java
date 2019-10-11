@@ -1,6 +1,6 @@
 package com.albert.recyclerview.help;
 
-import android.support.v7.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.albert.recyclerview.listener.ItemCalculator;
 

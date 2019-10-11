@@ -2,9 +2,9 @@ package com.albert.recyclerviewadapterdemo;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     private static final String SPARSEARRAY = "SparseArray List";
     private static final String DECORATION = "RecyclerView Decoration";
     private static final String LOAD_MORE = "RecyclerView Load More";
+    private static final String WRAPPER_ADAPTER = "Wrapper Adapter";
 
     private static final String[] CATEGORIES = new String[]{
             HEADER_AND_FOOTER,
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             SPARSEARRAY,
             DECORATION,
             LOAD_MORE,
+            WRAPPER_ADAPTER
     };
 
     private MainActivityContract.Presenter mMainPresenter;
@@ -62,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                         break;
                     case LOAD_MORE:
                         LoadMoreActivity.start(MainActivity.this);
+                    case WRAPPER_ADAPTER:
+                        WrapperAdapterActivity.start(MainActivity.this);
                         break;
                 }
             }

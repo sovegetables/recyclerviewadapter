@@ -109,7 +109,7 @@ private class Adapter extends LoadMoreListRecyclerAdapter<String> {
 mAdapter = new Adapter(this);
 mAdapter.setLoadMoreLayout(R.layout.spinner);
 mAdapter.setOnLoadMoreListener(new OnLoadMoreListener(){
-    public void onLoadMore(LoadMoreListRecyclerAdapter adapter){
+    public void onLoadMore(LoadMoreListRecyclerAdapter wrapperAdapters){
         //load more
     }
 });
@@ -138,8 +138,8 @@ public abstract class MultiAdapter<T> extends BaseRecyclerAdapter<List<T>, T>{
 
     private static class ViewType1 extends RecyclerViewType {
 
-            public DataRecyclerViewType(MultiAdapter adapter){
-                super(adapter);
+            public DataRecyclerViewType(MultiAdapter wrapperAdapters){
+                super(wrapperAdapters);
             }
 
             @Override

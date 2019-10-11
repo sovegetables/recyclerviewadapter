@@ -1,6 +1,6 @@
 package com.albert.recyclerview.help;
 
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.albert.recyclerview.listener.ItemCalculator;
 

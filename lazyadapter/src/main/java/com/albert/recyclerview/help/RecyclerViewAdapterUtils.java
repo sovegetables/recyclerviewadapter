@@ -1,6 +1,6 @@
 package com.albert.recyclerview.help;
 
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.ViewGroup;
 
 import com.albert.recyclerview.adapter.XOLazyRecyclerViewHolder;

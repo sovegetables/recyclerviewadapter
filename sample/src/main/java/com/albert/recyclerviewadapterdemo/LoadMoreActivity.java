@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.widget.TextView;
 
 import com.albert.recyclerview.adapter.LoadMoreListRecyclerAdapter;
@@ -24,7 +24,7 @@ import java.util.Arrays;
  */
 public class LoadMoreActivity extends AppCompatActivity{
 
-    public  static void start(Activity activity){
+    public static void start(Activity activity){
         activity.startActivity(new Intent(activity, LoadMoreActivity.class));
     }
 
