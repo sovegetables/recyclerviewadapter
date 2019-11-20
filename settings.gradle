@@ -1,1 +1,1 @@
-include ':sample', ':lazyadapter', ':wrapper'
+include ':sample', ':lazyadapter', ':wrapper', ':adapter'

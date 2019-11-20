@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     private static final String DECORATION = "RecyclerView Decoration";
     private static final String LOAD_MORE = "RecyclerView Load More";
     private static final String WRAPPER_ADAPTER = "Wrapper Adapter";
+    private static final String MULTI_TYPE_ADAPTER = "Multi Type Adapter";
 
     private static final String[] CATEGORIES = new String[]{
             HEADER_AND_FOOTER,
@@ -32,7 +33,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             SPARSEARRAY,
             DECORATION,
             LOAD_MORE,
-            WRAPPER_ADAPTER
+            WRAPPER_ADAPTER,
+            MULTI_TYPE_ADAPTER
     };
 
     private MainActivityContract.Presenter mMainPresenter;
@@ -67,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                     case WRAPPER_ADAPTER:
                         WrapperAdapterActivity.start(MainActivity.this);
                         break;
+                    case MULTI_TYPE_ADAPTER:
+                        MultiTypeActivity.start(MainActivity.this);
+                        break;
                 }
             }
         });
@@ -81,6 +86,40 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mMainPresenter.start();
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public void showCategories(List<String> categories) {
         mAdapter.setData(categories);
@@ -91,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mMainPresenter = mainPresenter;
     }
 
-    private class Adapter extends ListRecyclerAdapter<String> {
+    private static class Adapter extends ListRecyclerAdapter<String> {
 
         public Adapter(Context context) {
             super(context);
