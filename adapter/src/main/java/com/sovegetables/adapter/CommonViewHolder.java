@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
  * Created by alliu on 3/10/2016.
  *
  */
-public class LazyRecyclerViewHolder extends RecyclerView.ViewHolder {
+public class CommonViewHolder extends RecyclerView.ViewHolder {
     private SparseArray<View> mViews = new SparseArray<>();
 
-    public LazyRecyclerViewHolder(ViewGroup parent, int layoutRes) {
+    public CommonViewHolder(ViewGroup parent, int layoutRes) {
         this(LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false));
     }
 
-    public LazyRecyclerViewHolder(@NonNull View itemView) {
+    public CommonViewHolder(@NonNull View itemView) {
         super(itemView);
         parseViews(itemView);
     }

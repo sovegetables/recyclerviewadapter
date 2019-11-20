@@ -1,6 +1,5 @@
 package com.albert.recyclerviewadapterdemo;
 
-import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,9 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
-import com.albert.recyclerview.adapter.ListRecyclerAdapter;
-import com.albert.recyclerview.adapter.XOLazyRecyclerViewHolder;
-import com.albert.recyclerview.listener.OnItemClickListener;
+import com.sovegetables.adapter.AbsListAdapter;
+import com.sovegetables.adapter.CommonViewHolder;
 import com.xogrp.recyclerviewadapterdemo.R;
 
 import java.util.ArrayList;
@@ -47,11 +45,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new Adapter(this);
-        mAdapter.setOnItemClickListener(new OnItemClickListener<String>() {
+        mAdapter = new Adapter();
+        mAdapter.setOnItemClickListener(new com.sovegetables.adapter.OnItemClickListener<String>() {
             @Override
-            public void onItemClick(View view, String item, int position) {
-                switch (item){
+            public void onItemClick(View view, String s, int position) {
+                switch (s){
                     case HEADER_AND_FOOTER:
                         HeaderAndFooterActivity.start(MainActivity.this);
                         break;
@@ -86,43 +84,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mMainPresenter.start();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public void showCategories(List<String> categories) {
-        mAdapter.setData(categories);
+        mAdapter.setItems(categories);
     }
 
     @Override
@@ -130,22 +94,17 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mMainPresenter = mainPresenter;
     }
 
-    private static class Adapter extends ListRecyclerAdapter<String> {
+    private static class Adapter extends AbsListAdapter<String> {
 
-        public Adapter(Context context) {
-            super(context);
+        @Override
+        protected void onBindView(CommonViewHolder holder, String s, int position) {
+            Button btn = holder.findViewById(R.id.btn_category);
+            btn.setText(s);
         }
 
         @Override
-        protected int getItemLayoutRes() {
+        protected int getLayoutRes() {
             return R.layout.item_categories;
         }
-
-        @Override
-        protected void onBindDataViewHolder(XOLazyRecyclerViewHolder holder, String item, int position) {
-            Button btn = holder.get(R.id.btn_category);
-            btn.setText(item);
-        }
-
     }
 }

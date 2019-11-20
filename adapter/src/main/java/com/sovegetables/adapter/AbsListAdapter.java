@@ -42,17 +42,17 @@ public abstract class AbsListAdapter<T> extends AbsDelegationAdapter<List<T>>{
         ListAdapterDelegate<T> delegate = new ListAdapterDelegate<T>() {
 
             @Override
-            protected void onViewCreated(ViewGroup parent, LazyRecyclerViewHolder holder) {
+            protected void onViewCreated(ViewGroup parent, CommonViewHolder holder) {
                 AbsListAdapter.this.onViewCreated(parent, holder);
             }
 
             @Override
-            protected void onBindView(LazyRecyclerViewHolder holder, T t, int position) {
+            protected void onBindView(CommonViewHolder holder, T t, int position) {
                 AbsListAdapter.this.onBindView(holder, t, position);
             }
 
             @Override
-            protected void onBindView(LazyRecyclerViewHolder holder, T t, int position, List payloads) {
+            protected void onBindView(CommonViewHolder holder, T t, int position, List payloads) {
                 AbsListAdapter.this.onBindView(holder, t, position, payloads);
             }
 
@@ -81,23 +81,23 @@ public abstract class AbsListAdapter<T> extends AbsDelegationAdapter<List<T>>{
         return super.onCreateViewHolder(parent, viewType);
     }
 
-    protected void onBindView(LazyRecyclerViewHolder holder, T t, int position, List payloads){
+    protected void onBindView(CommonViewHolder holder, T t, int position, List payloads){
         onBindView(holder, t, position);
     }
 
     /**
      * invoked after onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position)
-     * @param holder LazyRecyclerViewHolder
+     * @param holder CommonViewHolder
      * @param t data resource item
      */
-    protected abstract void onBindView(LazyRecyclerViewHolder holder, T t, int position);
+    protected abstract void onBindView(CommonViewHolder holder, T t, int position);
 
     /**
      * invoked after onCreateViewHolder(@NonNull ViewGroup parent)
      * @param parent ViewGroup
-     * @param holder LazyRecyclerViewHolder
+     * @param holder CommonViewHolder
      */
-    protected void onViewCreated(ViewGroup parent, LazyRecyclerViewHolder holder){}
+    protected void onViewCreated(ViewGroup parent, CommonViewHolder holder){}
 
     /**
      * recycler view item layout resource

@@ -8,14 +8,21 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.albert.recyclerviewadapterdemo.MultiTypeActivity"></activity>
-        <activity android:name="com.albert.recyclerviewadapterdemo.WrapperAdapterActivity" />
-        <activity android:name="com.albert.recyclerviewadapterdemo.MainActivity">
+        <activity android:name="com.albert.recyclerviewadapterdemo.Main2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.albert.recyclerviewadapterdemo.MultiTypeActivity" />
+        <activity android:name="com.albert.recyclerviewadapterdemo.WrapperAdapterActivity" />
+        <activity android:name="com.albert.recyclerviewadapterdemo.MainActivity">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
         <activity
             android:name="com.albert.recyclerviewadapterdemo.MultiChoiceActivity"

@@ -1,5 +1,6 @@
 package com.albert.recyclerviewadapterdemo
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +10,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.sovegetables.adapter.AbsDelegationAdapter
 import com.sovegetables.adapter.AdapterDelegate
-import com.sovegetables.adapter.LazyRecyclerViewHolder
+import com.sovegetables.adapter.CommonViewHolder
 import com.sovegetables.adapter.ListAdapterDelegate
 import com.xogrp.recyclerviewadapterdemo.R
 import kotlinx.android.synthetic.main.activity_multi_type.*
@@ -111,7 +112,7 @@ class MultiTypeActivity : AppCompatActivity() {
 
         init {
             delegatesManager.addDelegate(object : ListAdapterDelegate<Item>(){
-                override fun onBindView(holder: LazyRecyclerViewHolder?, t: Item?, position: Int) {
+                override fun onBindView(holder: CommonViewHolder?, t: Item?, position: Int) {
                 }
 
                 override fun isForViewType(items: MutableList<Item>, position: Int): Boolean {
@@ -125,7 +126,7 @@ class MultiTypeActivity : AppCompatActivity() {
             })
 
             delegatesManager.addDelegate(object : ListAdapterDelegate<Item>(){
-                override fun onBindView(holder: LazyRecyclerViewHolder?, t: Item?, position: Int) {
+                override fun onBindView(holder: CommonViewHolder?, t: Item?, position: Int) {
                 }
 
                 override fun isForViewType(items: MutableList<Item>, position: Int): Boolean {
@@ -140,7 +141,7 @@ class MultiTypeActivity : AppCompatActivity() {
 
             delegatesManager.addDelegate(object : ListAdapterDelegate<Item>(){
 
-                override fun onViewCreated(parent: ViewGroup?, holder: LazyRecyclerViewHolder) {
+                override fun onViewCreated(parent: ViewGroup?, holder: CommonViewHolder) {
                     super.onViewCreated(parent, holder)
 
                     val listener = View.OnClickListener {
@@ -161,7 +162,7 @@ class MultiTypeActivity : AppCompatActivity() {
                     holder.findViewById<Button>(R.id.btn_three).setOnClickListener(listener)
                 }
 
-                override fun onBindView(holder: LazyRecyclerViewHolder?, t: Item?, position: Int) {
+                override fun onBindView(holder: CommonViewHolder?, t: Item?, position: Int) {
                     AdapterDelegate.setItemTag(holder, t)
                     AdapterDelegate.setPositionTag(holder, position)
                 }
@@ -185,8 +186,8 @@ class MultiTypeActivity : AppCompatActivity() {
 
     companion object {
         @JvmStatic
-        fun start(mainActivity: MainActivity) {
-            mainActivity.startActivity(Intent(mainActivity, MultiTypeActivity::class.java))
+        fun start(activity: Activity) {
+            activity.startActivity(Intent(activity, MultiTypeActivity::class.java))
         }
     }
 }

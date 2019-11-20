@@ -23,7 +23,7 @@ public abstract class ListAdapterDelegate<T> extends AdapterDelegate<List<T>> {
     @NonNull
     @Override
     protected RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
-        LazyRecyclerViewHolder holder = new LazyRecyclerViewHolder(LayoutInflater.from(parent.getContext()).inflate(getLayoutRes(), parent, false));
+        CommonViewHolder holder = new CommonViewHolder(LayoutInflater.from(parent.getContext()).inflate(getLayoutRes(), parent, false));
         if(mOnItemClickListener != null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -41,31 +41,31 @@ public abstract class ListAdapterDelegate<T> extends AdapterDelegate<List<T>> {
     protected final void onBindViewHolder(List<T> items, @NonNull RecyclerView.ViewHolder holder, int position, List payloads) {
         setItemTag(holder, items.get(position));
         setPositionTag(holder, position);
-        onBindView(((LazyRecyclerViewHolder) holder), items.get(position), position, payloads);
+        onBindView(((CommonViewHolder) holder), items.get(position), position, payloads);
     }
 
     @Override
     protected void onBindViewHolder(List<T> items, @NonNull RecyclerView.ViewHolder holder, int position) {
-        onBindView(((LazyRecyclerViewHolder)holder), items.get(position), position);
+        onBindView(((CommonViewHolder)holder), items.get(position), position);
     }
 
-    protected void onBindView(LazyRecyclerViewHolder holder, T t, int position, List payloads){
+    protected void onBindView(CommonViewHolder holder, T t, int position, List payloads){
         onBindView(holder, t, position);
     }
 
     /**
      * invoked after onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position)
-     * @param holder LazyRecyclerViewHolder
+     * @param holder CommonViewHolder
      * @param t data resource item
      */
-    protected abstract void onBindView(LazyRecyclerViewHolder holder, T t, int position);
+    protected abstract void onBindView(CommonViewHolder holder, T t, int position);
 
     /**
      * invoked after onCreateViewHolder(@NonNull ViewGroup parent)
      * @param parent ViewGroup
-     * @param holder LazyRecyclerViewHolder
+     * @param holder CommonViewHolder
      */
-    protected void onViewCreated(ViewGroup parent, LazyRecyclerViewHolder holder){}
+    protected void onViewCreated(ViewGroup parent, CommonViewHolder holder){}
 
     /**
      * recycler view item layout resource
