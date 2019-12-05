@@ -99,6 +99,11 @@ public abstract class AbsListAdapter<T> extends AbsDelegationAdapter<List<T>>{
      */
     protected void onViewCreated(ViewGroup parent, CommonViewHolder holder){}
 
+    @Override
+    public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView);
+    }
+
     /**
      * recycler view item layout resource
      * @return layout resource
