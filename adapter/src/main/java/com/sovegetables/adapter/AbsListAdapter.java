@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
+import androidx.collection.SparseArrayCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,11 +23,13 @@ import java.util.List;
 public abstract class AbsListAdapter<T> extends AbsDelegationAdapter<List<T>>{
 
     private boolean mIsDiffContentType;
-    private OnItemClickListener<T> onItemClickListener;
     protected RecyclerView mRecyclerView;
 
     public void setOnItemClickListener(OnItemClickListener<T> onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
+        final SparseArrayCompat<AdapterDelegate<List<T>>> delegates = delegatesManager.delegates;
+        for(int i = 0, len = delegates.size(); i < len; i++){
+            delegates.valueAt(i).setOnItemClickListener(onItemClickListener);
+        }
     }
 
     public AbsListAdapter() {
@@ -66,7 +69,6 @@ public abstract class AbsListAdapter<T> extends AbsDelegationAdapter<List<T>>{
                 return true;
             }
         };
-        delegate.setOnItemClickListener(onItemClickListener);
         delegatesManager.addDelegate(delegate);
     }
 

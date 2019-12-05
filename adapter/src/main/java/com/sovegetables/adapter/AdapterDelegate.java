@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -41,6 +42,17 @@ public abstract class AdapterDelegate<T> {
     private static final int TAG_POSITION_ID =  R.id.id_holder_position;
     int viewType;
     private RecyclerView recyclerView;
+
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener<?> onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Nullable protected <E> OnItemClickListener<E> getOnItemClickListener() {
+        return mOnItemClickListener;
+    }
 
     public int getViewType() {
         return viewType;

@@ -13,23 +13,17 @@ import java.util.List;
 
 public abstract class ListAdapterDelegate<T> extends AdapterDelegate<List<T>> {
 
-    private OnItemClickListener<T> mOnItemClickListener;
-
-
-    public void setOnItemClickListener(OnItemClickListener<T> onItemClickListener) {
-        mOnItemClickListener = onItemClickListener;
-    }
-
     @NonNull
     @Override
     protected RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
         CommonViewHolder holder = new CommonViewHolder(LayoutInflater.from(parent.getContext()).inflate(getLayoutRes(), parent, false));
-        if(mOnItemClickListener != null){
+        final OnItemClickListener<T> onItemClickListener = getOnItemClickListener();
+        if(onItemClickListener != null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     T item = getItemByTag(v);
-                    mOnItemClickListener.onItemClick(v, item, getPositionByTag(v));
+                    onItemClickListener.onItemClick(v, item, getPositionByTag(v));
                 }
             });
         }

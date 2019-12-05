@@ -141,3 +141,4 @@ private class InternalAdapter: AbsDelegationAdapter<List<Item>>(){
 - Single View Type
 - Multi View Type
 - Easy Usage
+- OnItemClickListener<T>
