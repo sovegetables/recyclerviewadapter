@@ -3,7 +3,6 @@ package com.albert.recyclerviewadapterdemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sovegetables.adapter.AbsListAdapter
 import com.sovegetables.adapter.CommonViewHolder
@@ -20,8 +19,9 @@ class Main2Activity : AppCompatActivity(), MainActivityContract.MainView{
         private const val LOAD_MORE = "RecyclerView Load More"
         private const val WRAPPER_ADAPTER = "Wrapper Adapter"
         private const val MULTI_TYPE_ADAPTER = "Multi Type Adapter"
+        private const val SIMPLE_TEXT_TYPE_ADAPTER = "Simple Text Adapter"
 
-        private val CATEGORIES = arrayOf(HEADER_AND_FOOTER, MULTI_CHOICE_LIST, SPARSEARRAY, DECORATION, LOAD_MORE, WRAPPER_ADAPTER, MULTI_TYPE_ADAPTER)
+        private val CATEGORIES = arrayOf(HEADER_AND_FOOTER, MULTI_CHOICE_LIST, SPARSEARRAY, DECORATION, LOAD_MORE, WRAPPER_ADAPTER, MULTI_TYPE_ADAPTER, SIMPLE_TEXT_TYPE_ADAPTER)
     }
 
     private var mMainPresenter: MainActivityContract.Presenter? = null
@@ -44,6 +44,7 @@ class Main2Activity : AppCompatActivity(), MainActivityContract.MainView{
                 }
                 WRAPPER_ADAPTER -> WrapperAdapterActivity.start(this@Main2Activity)
                 MULTI_TYPE_ADAPTER -> MultiTypeActivity.start(this@Main2Activity)
+                SIMPLE_TEXT_TYPE_ADAPTER -> SimpleAdapterActivity.start(this@Main2Activity)
             }
         }
         rv.adapter = mAdapter

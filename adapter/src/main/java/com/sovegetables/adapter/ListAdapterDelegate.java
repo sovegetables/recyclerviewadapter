@@ -17,6 +17,12 @@ public abstract class ListAdapterDelegate<T> extends AdapterDelegate<List<T>> {
     @Override
     protected RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
         CommonViewHolder holder = new CommonViewHolder(LayoutInflater.from(parent.getContext()).inflate(getLayoutRes(), parent, false));
+        onHandlerItemClickEvent(holder);
+        onViewCreated(parent, holder);
+        return holder;
+    }
+
+    protected void onHandlerItemClickEvent(CommonViewHolder holder) {
         final OnItemClickListener<T> onItemClickListener = getOnItemClickListener();
         if(onItemClickListener != null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -27,8 +33,6 @@ public abstract class ListAdapterDelegate<T> extends AdapterDelegate<List<T>> {
                 }
             });
         }
-        onViewCreated(parent, holder);
-        return holder;
     }
 
     @Override

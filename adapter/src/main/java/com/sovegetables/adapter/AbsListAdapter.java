@@ -3,6 +3,7 @@ package com.sovegetables.adapter;
 
 import android.view.ViewGroup;
 
+import androidx.annotation.CallSuper;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.collection.SparseArrayCompat;
@@ -42,6 +43,10 @@ public abstract class AbsListAdapter<T> extends AbsDelegationAdapter<List<T>>{
                 mIsDiffContentType = true;
             }
         }
+        onCreateAdapterDelegates(delegatesManager);
+    }
+
+    protected void onCreateAdapterDelegates(AdapterDelegatesManager<List<T>> delegatesManager) {
         ListAdapterDelegate<T> delegate = new ListAdapterDelegate<T>() {
 
             @Override
@@ -72,6 +77,7 @@ public abstract class AbsListAdapter<T> extends AbsDelegationAdapter<List<T>>{
         delegatesManager.addDelegate(delegate);
     }
 
+    @CallSuper
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         mRecyclerView = recyclerView;
