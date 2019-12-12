@@ -1,3 +1,5 @@
+# 0.1.4
+为SimpleAdapter的Item增加id区分类型
 # 0.1.3
 SimpleAdapter, 提供简单一个文本展示, 支持简单文本样式定义
 - 一个文本
