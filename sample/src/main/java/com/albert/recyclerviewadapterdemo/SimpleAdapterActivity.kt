@@ -33,7 +33,7 @@ class SimpleAdapterActivity : AppCompatActivity() {
             }
 
         }))
-        list.add(SimpleItem.Default(6,"栏目 6 ", R.drawable.me_study))
+        list.add(SimpleItem.Default(6,"栏目 6 ", R.drawable.me_study, visible = false))
         list.add(SimpleItem.Default(7,"栏目 7 ", R.drawable.me_team))
         list.add(SimpleItem.Default(9,"栏目 8 ", R.drawable.me_setting))
         val adapter = com.sovegetables.adapter.SimpleAdapter.Builder()

@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
+import androidx.annotation.DimenRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
@@ -148,6 +149,10 @@ public class SimpleAdapter extends AbsListAdapter<SimpleItem> {
         }
 
         holder.itemView.setVisibility(simpleItem.visible()? View.VISIBLE: View.GONE);
+
+        ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
+        layoutParams.height = simpleItem.visible()? mBuilder.itemHeight : 0;
+        holder.itemView.setLayoutParams(layoutParams);
     }
 
     @Override
@@ -162,6 +167,7 @@ public class SimpleAdapter extends AbsListAdapter<SimpleItem> {
         @ColorRes int lineColor = R.color.c_horizontal_divider;
         @ColorRes int unSelectedItemBgColorRes = R.color.c_unselected_item_bg;
         @ColorRes int itemBgColorRes = android.R.color.white;
+        @DimenRes int itemHeight = R.dimen.d_item_h;
         boolean lineAligned = false;
         List<SimpleItem> defaults;
 
@@ -172,6 +178,11 @@ public class SimpleAdapter extends AbsListAdapter<SimpleItem> {
 
         public Builder textStyle(@StyleRes int style){
             this.textStyle = style;
+            return this;
+        }
+
+        public Builder itemHeight(@DimenRes int itemHeight){
+            this.itemHeight = itemHeight;
             return this;
         }
 

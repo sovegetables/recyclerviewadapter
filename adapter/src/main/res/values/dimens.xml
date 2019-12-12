@@ -3,4 +3,5 @@
     <dimen name="d_item_simple_margin_l">15dp</dimen>
     <dimen name="d_item_simple_margin_r">15dp</dimen>
     <dimen name="d_horizontal_divider_h">1dp</dimen>
+    <dimen name="d_item_h">56dp</dimen>
 </resources>
