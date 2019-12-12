@@ -22,20 +22,20 @@ class SimpleAdapterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_simple_adapter)
 
         val list = ArrayList<SimpleItem.Default>()
-        list.add(SimpleItem.Default("栏目 1 ", R.drawable.me_setting))
-        list.add(SimpleItem.Default("栏目 2 ", R.drawable.me_study))
-        list.add(SimpleItem.Default("栏目 3 ", R.drawable.me_team))
-        list.add(SimpleItem.Default("栏目 4 ", R.drawable.me_setting, selected = false))
-        list.add(SimpleItem.Default("栏目 5 ", R.drawable.me_team, itemChecked = false, enableCheckBoxMode = true,
+        list.add(SimpleItem.Default(1, "栏目 1 ", R.drawable.me_setting))
+        list.add(SimpleItem.Default(2, "栏目 2 ", R.drawable.me_study))
+        list.add(SimpleItem.Default(3, "栏目 3 ", R.drawable.me_team))
+        list.add(SimpleItem.Default(4, "栏目 4 ", R.drawable.me_setting, selected = false))
+        list.add(SimpleItem.Default(5, "栏目 5 ", R.drawable.me_team, itemChecked = false, enableCheckBoxMode = true,
                 listener = object : SimpleItem.OnItemCheckedChangedListener{
             override fun onChanged(checked: Boolean) {
                 Toast.makeText(application, "开关:$checked", Toast.LENGTH_SHORT).show()
             }
 
         }))
-        list.add(SimpleItem.Default("栏目 6 ", R.drawable.me_study))
-        list.add(SimpleItem.Default("栏目 7 ", R.drawable.me_team))
-        list.add(SimpleItem.Default("栏目 8 ", R.drawable.me_setting))
+        list.add(SimpleItem.Default(6,"栏目 6 ", R.drawable.me_study))
+        list.add(SimpleItem.Default(7,"栏目 7 ", R.drawable.me_team))
+        list.add(SimpleItem.Default(9,"栏目 8 ", R.drawable.me_setting))
         val adapter = com.sovegetables.adapter.SimpleAdapter.Builder()
                 .lineAligned(true)
                 .textStyle(R.style.CustomAdapterSimpleText)

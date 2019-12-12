@@ -146,6 +146,8 @@ public class SimpleAdapter extends AbsListAdapter<SimpleItem> {
         }else {
             holder.itemView.setBackgroundResource(mBuilder.unSelectedItemBgColorRes);
         }
+
+        holder.itemView.setVisibility(simpleItem.visible()? View.VISIBLE: View.GONE);
     }
 
     @Override
