@@ -151,7 +151,7 @@ public class SimpleAdapter extends AbsListAdapter<SimpleItem> {
         holder.itemView.setVisibility(simpleItem.visible()? View.VISIBLE: View.GONE);
 
         ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
-        layoutParams.height = simpleItem.visible()? mBuilder.itemHeight : 0;
+        layoutParams.height = simpleItem.visible()? holder.itemView.getResources().getDimensionPixelSize(mBuilder.itemHeight) : 0;
         holder.itemView.setLayoutParams(layoutParams);
     }
 
