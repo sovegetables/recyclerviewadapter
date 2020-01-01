@@ -8,8 +8,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.albert.recyclerviewadapterdemo.SimpleAdapterActivity"></activity>
-        <activity android:name="com.albert.recyclerviewadapterdemo.Main2Activity">
+        <activity
+            android:name="com.albert.recyclerviewadapterdemo.SimpleAdapterActivity"
+            android:label="SimpleAdapterActivity"
+            />
+        <activity
+            android:name="com.albert.recyclerviewadapterdemo.Main2Activity"
+            android:label="MainActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,28 +24,9 @@
         </activity>
         <activity android:name="com.albert.recyclerviewadapterdemo.MultiTypeActivity" />
         <activity android:name="com.albert.recyclerviewadapterdemo.WrapperAdapterActivity" />
-        <activity android:name="com.albert.recyclerviewadapterdemo.MainActivity">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
         <activity
             android:name="com.albert.recyclerviewadapterdemo.MultiChoiceActivity"
             android:label="MultiChoice" />
-        <activity
-            android:name="com.albert.recyclerviewadapterdemo.HeaderAndFooterActivity"
-            android:label="HeaderAndFooter" />
-        <activity
-            android:name="com.albert.recyclerviewadapterdemo.SpareArrayActivity"
-            android:label="SpareArray" />
-        <activity
-            android:name="com.albert.recyclerviewadapterdemo.DecorationActivity"
-            android:label="DecorationActivity" />
         <activity
             android:name="com.albert.recyclerviewadapterdemo.LoadMoreActivity"
             android:label="LoadMoreActivity" />

@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.CallSuper;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.UiThread;
 import androidx.collection.SparseArrayCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +24,6 @@ import java.util.List;
 
 public abstract class AbsListAdapter<T> extends AbsDelegationAdapter<List<T>>{
 
-    private boolean mIsDiffContentType;
     protected RecyclerView mRecyclerView;
 
     public void setOnItemClickListener(OnItemClickListener<T> onItemClickListener) {
@@ -34,15 +34,6 @@ public abstract class AbsListAdapter<T> extends AbsDelegationAdapter<List<T>>{
     }
 
     public AbsListAdapter() {
-        Class<?> clazz = getClass();
-        Type type = clazz.getGenericSuperclass();
-        if(type instanceof ParameterizedType){
-            ParameterizedType pt = (ParameterizedType)type;
-            Type[] typeArgs = pt.getActualTypeArguments();
-            if(typeArgs[0] instanceof DiffCallBack.DiffContent){
-                mIsDiffContentType = true;
-            }
-        }
         onCreateAdapterDelegates(delegatesManager);
     }
 
@@ -132,16 +123,9 @@ public abstract class AbsListAdapter<T> extends AbsDelegationAdapter<List<T>>{
         return items.get(position).hashCode();
     }
 
-    @Override @SuppressWarnings("unchecked")
+    @Override @UiThread
     public void setItems(List<T> items) {
-        if(mIsDiffContentType && items instanceof ArrayList) {
-            ArrayList newData = DeepCloneUtil.copy((ArrayList) items);
-            DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffCallBack(items, newData), false);
-            this.items = items;
-            diffResult.dispatchUpdatesTo(this);
-        }else {
-            this.items = items;
-            notifyDataSetChanged();
-        }
+        this.items = items;
+        notifyDataSetChanged();
     }
 }

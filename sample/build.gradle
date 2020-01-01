@@ -24,11 +24,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//    implementation project(':lazyadapter')
-//    implementation project(':wrapper')
+    implementation project(':lazyadapter')
+    implementation project(':wrapper')
     implementation project(':adapter')
-    implementation 'com.github.sovegetables.recyclerviewadapter:lazyadapter:0.1.0'
-    implementation 'com.github.sovegetables.recyclerviewadapter:wrapper:0.1.0'
+    implementation project(':loadmore')
+//    implementation 'com.github.sovegetables.recyclerviewadapter:lazyadapter:0.1.0'
+//    implementation 'com.github.sovegetables.recyclerviewadapter:wrapper:0.1.0'
     implementation 'com.github.sovegetables:circleloadingview:0.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.0.0'

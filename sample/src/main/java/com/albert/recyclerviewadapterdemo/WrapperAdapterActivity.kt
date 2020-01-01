@@ -1,5 +1,6 @@
 package com.albert.recyclerviewadapterdemo
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -62,13 +63,14 @@ class WrapperAdapterActivity : AppCompatActivity() {
     private val headerViews = arrayListOf<View>()
     private val footerViews = arrayListOf<View>()
 
+    @SuppressLint("SetTextI18n")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_add -> {
                 val header = LayoutInflater.from(this).inflate(R.layout.item_header, null)
                 headerViews.add(header)
                 val textView = header.findViewById<TextView>(R.id.tv_item)
-                textView.text = "我是header" + headerIndex
+                textView.text = "我是header$headerIndex"
                 mWrapperAdapter.addHeaderView(header)
                 rv_data.scrollToPosition(0)
                 headerIndex ++
@@ -84,7 +86,7 @@ class WrapperAdapterActivity : AppCompatActivity() {
             R.id.menu_add_footer -> {
                 val footer = LayoutInflater.from(this).inflate(R.layout.item_footer, null)
                 val textView = footer.findViewById<TextView>(R.id.tv_item)
-                textView.text = "我是Footer" + footerIndex
+                textView.text = "我是Footer$footerIndex"
                 footerViews.add(footer)
                 mWrapperAdapter.addFooterView(footer)
                 rv_data.scrollToPosition(mWrapperAdapter.itemCount - 1)

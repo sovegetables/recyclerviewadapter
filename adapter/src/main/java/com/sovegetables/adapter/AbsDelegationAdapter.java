@@ -36,7 +36,23 @@ public abstract class AbsDelegationAdapter<T> extends RecyclerView.Adapter {
     protected T items;
 
     public AbsDelegationAdapter() {
-        this(new AdapterDelegatesManager<T>());
+        this(new AdapterDelegatesManager<T>().setFallbackDelegate(new AdapterDelegate<T>() {
+
+            @Override
+            protected boolean isForViewType(@NonNull T items, int position) {
+                return true;
+            }
+
+            @NonNull
+            @Override
+            protected RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
+                return new CommonViewHolder(parent);
+            }
+
+            @Override
+            protected void onBindViewHolder(T items, @NonNull RecyclerView.ViewHolder holder, int position) {
+            }
+        }));
     }
 
     public AbsDelegationAdapter(@NonNull AdapterDelegatesManager<T> delegatesManager) {

@@ -12,16 +12,13 @@ import java.util.*
 class Main2Activity : AppCompatActivity(), MainActivityContract.MainView{
 
     companion object{
-        private const val HEADER_AND_FOOTER = "Header and Footer List"
         private const val MULTI_CHOICE_LIST = "Multi Choice List"
-        private const val SPARSEARRAY = "SparseArray List"
-        private const val DECORATION = "RecyclerView Decoration"
         private const val LOAD_MORE = "RecyclerView Load More"
         private const val WRAPPER_ADAPTER = "Wrapper Adapter"
         private const val MULTI_TYPE_ADAPTER = "Multi Type Adapter"
         private const val SIMPLE_TEXT_TYPE_ADAPTER = "Simple Text Adapter"
 
-        private val CATEGORIES = arrayOf(HEADER_AND_FOOTER, MULTI_CHOICE_LIST, SPARSEARRAY, DECORATION, LOAD_MORE, WRAPPER_ADAPTER, MULTI_TYPE_ADAPTER, SIMPLE_TEXT_TYPE_ADAPTER)
+        private val CATEGORIES = arrayOf(MULTI_CHOICE_LIST, LOAD_MORE, WRAPPER_ADAPTER, MULTI_TYPE_ADAPTER, SIMPLE_TEXT_TYPE_ADAPTER)
     }
 
     private var mMainPresenter: MainActivityContract.Presenter? = null
@@ -34,14 +31,8 @@ class Main2Activity : AppCompatActivity(), MainActivityContract.MainView{
         mAdapter = Adapter()
         mAdapter.setOnItemClickListener { _, item, _ ->
             when (item) {
-                HEADER_AND_FOOTER -> HeaderAndFooterActivity.start(this@Main2Activity)
+                LOAD_MORE -> LoadMoreActivity.start(this)
                 MULTI_CHOICE_LIST -> MultiChoiceActivity.start(this@Main2Activity)
-                SPARSEARRAY -> SpareArrayActivity.start(this@Main2Activity)
-                DECORATION -> DecorationActivity.start(this@Main2Activity)
-                LOAD_MORE -> {
-                    LoadMoreActivity.start(this@Main2Activity)
-                    WrapperAdapterActivity.start(this@Main2Activity)
-                }
                 WRAPPER_ADAPTER -> WrapperAdapterActivity.start(this@Main2Activity)
                 MULTI_TYPE_ADAPTER -> MultiTypeActivity.start(this@Main2Activity)
                 SIMPLE_TEXT_TYPE_ADAPTER -> SimpleAdapterActivity.start(this@Main2Activity)
